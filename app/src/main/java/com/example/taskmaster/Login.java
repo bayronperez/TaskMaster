@@ -1,19 +1,26 @@
 package com.example.taskmaster;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import com.example.taskmaster.Base_De_Datos.ScriptSqLite;
 
 public class Login extends AppCompatActivity {
 
     private Button btnLogin;
     private TextView tvRegister;
+    private EditText editTextEmail, editTextPassword;
+    private ScriptSqLite dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,25 +35,42 @@ public class Login extends AppCompatActivity {
             return insets;
         });
 
-        // Encontrar el botón de iniciar sesión
+        dbHelper = new ScriptSqLite(this);
+
+        // Inicializar vistas
         btnLogin = findViewById(R.id.btnLogin);
-
-        // Al presionar el botón de iniciar sesión, se redirige al Menú Principal
-        btnLogin.setOnClickListener(v -> {
-            // Crear un Intent para ir al Menú Principal
-            Intent intent = new Intent(Login.this, MenuPrincipal.class);
-            startActivity(intent);  // Inicia la actividad del Menú Principal
-            finish();  // Cierra la actividad de Login para no regresar a ella
-        });
-
-        // Encontrar el texto de "Regístrate aquí"
         tvRegister = findViewById(R.id.tvRegister);
+        editTextEmail = findViewById(R.id.editTextTextEmailAddress);
+        editTextPassword = findViewById(R.id.editTextTextPassword);
 
-        // Al presionar el texto de registro, se redirige a la pantalla de Registro
-        tvRegister.setOnClickListener(v -> {
-            // Crear un Intent para ir a la actividad de Registro
-            Intent intent = new Intent(Login.this, Registro.class);
-            startActivity(intent);  // Inicia la actividad de Registro
+        // Configurar botón de inicio de sesión
+        btnLogin.setOnClickListener(v -> {
+            String email = editTextEmail.getText().toString().trim();
+            String password = editTextPassword.getText().toString().trim();
+
+            if (dbHelper.isValidUser(email, password)) {
+                // Si las credenciales son correctas, ir a la actividad principal
+                Intent intent = new Intent(Login.this, MenuPrincipal.class);
+                startActivity(intent);
+                finish();
+            } else {
+                // Si las credenciales no coinciden, mostrar un mensaje de alerta
+                showAlert("Credenciales incorrectas", "Correo o contraseña incorrectos. Inténtalo de nuevo.");
+            }
         });
+
+        // Configurar enlace de registro
+        tvRegister.setOnClickListener(v -> {
+            Intent intent = new Intent(Login.this, Registro.class);
+            startActivity(intent);
+        });
+    }
+
+    private void showAlert(String title, String message) {
+        new AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("Aceptar", (dialog, which) -> dialog.dismiss())
+                .show();
     }
 }
