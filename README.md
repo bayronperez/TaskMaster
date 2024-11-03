@@ -23,7 +23,7 @@
 
 ## Tecnologías y Herramientas
 
-- *Lenguaje*: Kotlin
+- *Lenguaje*: Java
 - *IDE*: Android Studio
 - *Arquitectura*: MVVM (Model-View-ViewModel) para separar la lógica de la interfaz de usuario
 - *Base de Datos*: Room (SQLite)
