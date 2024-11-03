@@ -4,7 +4,7 @@ TaskMaster es una aplicación de gestión de tareas intuitiva y eficiente que pe
 Descripción General
 TaskMaster permite al usuario realizar operaciones de creación, edición, eliminación y visualización de tareas, con opciones para asignar prioridades y establecer recordatorios. La aplicación almacena de forma segura los datos del usuario en una base de datos local para garantizar que toda la información esté disponible sin necesidad de conexión a internet.
 
-Características
+Funcionalidades
 Creación de Tareas: Permite añadir tareas con detalles como título, descripción, fecha de vencimiento y prioridad.
 Edición y Eliminación: Posibilidad de modificar o borrar tareas existentes.
 Gestión de Prioridades: Los usuarios pueden asignar niveles de prioridad a las tareas para organizarlas según su importancia.
@@ -16,7 +16,7 @@ TaskMaster utiliza Room (una capa de abstracción sobre SQLite) como su base de 
 Persistencia de Datos: Las tareas se guardan en la base de datos, por lo que permanecen almacenadas aunque la aplicación se cierre.
 Consultas Rápidas: Consultas optimizadas para acceder a las tareas en función de criterios como prioridad o fecha de vencimiento.
 Compatibilidad Offline: Los datos están disponibles sin conexión a internet.
-Tecnologías Utilizadas
+Tecnologías y Herramientas
 Lenguaje: Kotlin
 IDE: Android Studio
 Arquitectura: MVVM (Model-View-ViewModel) para separar la lógica de la interfaz de usuario
