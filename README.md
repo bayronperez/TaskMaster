@@ -29,12 +29,3 @@ data: Define las entidades de la base de datos y los DAOs (Data Access Objects) 
 ui: Incluye las actividades y fragmentos de la interfaz de usuario.
 viewmodel: Contiene los ViewModels para la interacción entre la UI y los datos.
 repository: Implementa el patrón Repository para gestionar el acceso a datos.
-Instalación y Ejecución
-Clona el repositorio:
-bash
-Copiar código
-git clone https://github.com/bayronperez/TaskMaster.git
-Abre el proyecto en Android Studio.
-Sincroniza el proyecto con Gradle y asegúrate de que todas las dependencias se descarguen correctamente.
-Configura un emulador o conecta un dispositivo físico con soporte para Android API 21 o superior.
-Ejecuta la aplicación desde Android Studio.
